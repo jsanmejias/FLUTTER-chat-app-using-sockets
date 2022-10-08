@@ -19,23 +19,27 @@ class ProfileBanner extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
+          Positioned(
+            bottom: 25,
+            right: 300,
             child: IconButton(
               onPressed: () => Get.back(),
-              icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                  color: palidBack),
+              icon:
+                  const Icon(Icons.arrow_back_ios_new_rounded, color: palidBack),
             ),
           ),
-          Positioned(
+          Positioned.fill(
             bottom: -30,
-            right: 125,
-            child: CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.white,
-              child: Image.asset(
-                "assets/avatar.png",
-                fit: BoxFit.fill,
+            // right: 125,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.white,
+                child: Image.asset(
+                  "assets/avatar.png",
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
           )
