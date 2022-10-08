@@ -1,0 +1,61 @@
+name: chat_app
+description: A new Flutter project.
+
+
+publish_to: 'none' 
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  
+  cupertino_icons: ^1.0.2
+  pull_to_refresh: ^2.0.0
+  simple_animations: ^3.1.1
+  provider: ^6.0.3
+  get: ^4.6.5
+  http: ^0.13.5
+  flutter_secure_storage: ^6.0.0
+  socket_io_client: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+ 
+  flutter_lints: ^2.0.0
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Thin.ttf
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-MediumItalic.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins-Italic.ttf
+        - asset: assets/fonts/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/Poppins-ExtraBold.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins-Black.ttf
+          
+   
+
+
