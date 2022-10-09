@@ -26,15 +26,15 @@ class ChatBubble extends StatelessWidget {
               parent: animationController, curve: Curves.easeOut),
           child: Container(
             child: uid == chatController.getLoggedUser().uid
-                ? _myMessage(context, chatController)
-                : _notMyMessage(context, chatController),
+                ? _myMessage(context)
+                : _notMyMessage(context),
           ),
         ),
       ),
     );
   }
 
-  Widget _myMessage(BuildContext context, ChatController chatController) {
+  Widget _myMessage(BuildContext context) {
     return Padding(
       padding:
           EdgeInsets.only(right: Get.width * 0.025, bottom: Get.height * 0.007),
@@ -55,9 +55,9 @@ class ChatBubble extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(Get.height * 0.002),
             child: Text(
-              chatController.convertStringToFormat(message),
+              message,
               style: TextStyle(
-                  fontSize: Get.height * 0.018,
+                  fontSize: Get.height * 0.020,
                   fontWeight: FontWeight.w500,
                   color: Colors.white),
             ),
@@ -67,7 +67,7 @@ class ChatBubble extends StatelessWidget {
     );
   }
 
-  Widget _notMyMessage(BuildContext context, ChatController chatController) {
+  Widget _notMyMessage(BuildContext context) {
     return Padding(
       padding:
           EdgeInsets.only(left: Get.width * 0.025, bottom: Get.height * 0.007),
@@ -88,9 +88,9 @@ class ChatBubble extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(Get.height * 0.002),
             child: Text(
-              chatController.convertStringToFormat(message),
+              message,
               style: TextStyle(
-                fontSize: Get.height * 0.018,
+                fontSize: Get.height * 0.020,
                 fontWeight: FontWeight.w500,
                 color: letterColor,
               ),

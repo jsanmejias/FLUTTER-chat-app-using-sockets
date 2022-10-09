@@ -48,6 +48,7 @@ class ProfileInfo extends StatelessWidget {
                           flex: 2,
                           child: Text(
                             "Username",
+                            textScaleFactor: 1,
                             style: TextStyle(
                               fontStyle: FontStyle.italic,
                               fontSize: Get.height * 0.020,
@@ -60,8 +61,8 @@ class ProfileInfo extends StatelessWidget {
                           flex: 3,
                           child: Text(
                             usersController.getLoggedUserName().toTitleCase(),
+                            textScaleFactor: 1,
                             style: TextStyle(
-                              // fontStyle: FontStyle.italic,
                               fontSize: Get.height * 0.024,
                               fontWeight: FontWeight.w600,
                               color: darkPurple,
@@ -76,6 +77,7 @@ class ProfileInfo extends StatelessWidget {
                           flex: 2,
                           child: Text(
                             "Email",
+                            textScaleFactor: 1,
                             style: TextStyle(
                               fontStyle: FontStyle.italic,
                               fontSize: Get.height * 0.020,
@@ -88,10 +90,10 @@ class ProfileInfo extends StatelessWidget {
                           flex: 3,
                           child: Text(
                             usersController.getLoggedUserEmail().toTitleCase(),
+                            textScaleFactor: 1,
                             maxLines: 2,
                             style: TextStyle(
                               overflow: TextOverflow.ellipsis,
-                              // fontStyle: FontStyle.italic,
                               fontSize: Get.height * 0.024,
                               fontWeight: FontWeight.w600,
                               color: darkPurple,

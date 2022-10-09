@@ -98,12 +98,6 @@ class ChatController extends GetxController {
     return _userAuthenticationUseCase.getLoggedUser();
   }
 
-  String convertStringToFormat(String message) {
-    List<String> words = message.split(" ");
-    words[0] = words[0].toTitleCase();
-    return words.join(' ');
-  }
-
   void onDispose() {
     for (ChatBubble bubble in bubbles) {
       bubble.animationController.dispose();

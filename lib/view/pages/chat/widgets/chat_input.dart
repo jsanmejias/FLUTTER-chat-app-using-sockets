@@ -23,6 +23,7 @@ class ChatInput extends StatelessWidget {
             Flexible(
               child: TextField(
                 controller: chatController.textEditingController,
+                textCapitalization: TextCapitalization.sentences,
                 onSubmitted: chatController.handleSubmit(),
                 onChanged: (String text) {
                   if (text.trim().isNotEmpty) {
