@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:chat_app/view/helpers/string_mod.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -95,6 +98,12 @@ class ChatController extends GetxController {
     return _userAuthenticationUseCase.getLoggedUser();
   }
 
+  String convertStringToFormat(String message) {
+    List<String> words = message.split(" ");
+    words[0] = words[0].toTitleCase();
+    return words.join(' ');
+  }
+
   void onDispose() {
     for (ChatBubble bubble in bubbles) {
       bubble.animationController.dispose();
@@ -106,7 +115,7 @@ class ChatController extends GetxController {
   void setInitials(TickerProvider stateVsync) async {
     userTo = _getMessagesUseCase.getUserTo();
     vsync = stateVsync;
-    await loadChatHistory();
+    // await loadChatHistory();
     listenToMessage();
   }
 }

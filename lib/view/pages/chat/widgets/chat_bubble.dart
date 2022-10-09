@@ -18,7 +18,6 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final authService = Provider.of<AuthService>(context);
     return GetBuilder<ChatController>(
       builder: (chatController) => FadeTransition(
         opacity: animationController,
@@ -27,15 +26,15 @@ class ChatBubble extends StatelessWidget {
               parent: animationController, curve: Curves.easeOut),
           child: Container(
             child: uid == chatController.getLoggedUser().uid
-                ? _myMessage(context)
-                : _notMyMessage(context),
+                ? _myMessage(context, chatController)
+                : _notMyMessage(context, chatController),
           ),
         ),
       ),
     );
   }
 
-  Widget _myMessage(BuildContext context) {
+  Widget _myMessage(BuildContext context, ChatController chatController) {
     return Padding(
       padding:
           EdgeInsets.only(right: Get.width * 0.025, bottom: Get.height * 0.007),
@@ -56,9 +55,11 @@ class ChatBubble extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(Get.height * 0.002),
             child: Text(
-              message,
-              style:
-                  TextStyle(color: Colors.white, fontSize: Get.height * 0.018),
+              chatController.convertStringToFormat(message),
+              style: TextStyle(
+                  fontSize: Get.height * 0.018,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white),
             ),
           ),
         ),
@@ -66,7 +67,7 @@ class ChatBubble extends StatelessWidget {
     );
   }
 
-  Widget _notMyMessage(BuildContext context) {
+  Widget _notMyMessage(BuildContext context, ChatController chatController) {
     return Padding(
       padding:
           EdgeInsets.only(left: Get.width * 0.025, bottom: Get.height * 0.007),
@@ -87,9 +88,12 @@ class ChatBubble extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(Get.height * 0.002),
             child: Text(
-              message,
-              style:
-                  TextStyle(color: letterColor, fontSize: Get.height * 0.018),
+              chatController.convertStringToFormat(message),
+              style: TextStyle(
+                fontSize: Get.height * 0.018,
+                fontWeight: FontWeight.w500,
+                color: letterColor,
+              ),
             ),
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:chat_app/view/common/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,24 +30,40 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
       child: SafeArea(
         child: Scaffold(
           appBar: ChatPageAppBar(),
-          body: Column(
-            children: [
-              Obx(
-                () => Flexible(
-                  child: ListView.builder(
-                    reverse: true,
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: chatController.bubbles.length,
-                    itemBuilder: (_, index) => chatController.bubbles[index],
-                  ),
-                ),
-              ),
-              const Divider(height: 1),
-              Container(
-                color: Colors.white,
-                child: ChatInput(),
-              )
-            ],
+          body: FutureBuilder(
+            future: chatController.loadChatHistory(),
+            builder: ((context, snapshot) {
+              if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Column(
+                  children: [
+                    Obx(
+                      () => Flexible(
+                        child: ListView.builder(
+                          reverse: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: chatController.bubbles.length,
+                          itemBuilder: (_, index) =>
+                              chatController.bubbles[index],
+                        ),
+                      ),
+                    ),
+                    const Divider(height: 1),
+                    Container(
+                      color: Colors.white,
+                      child: ChatInput(),
+                    )
+                  ],
+                );
+              }
+              return const Center(
+                  child: CircularProgressIndicator(
+                strokeWidth: 7,
+                color: electricPurple,
+              ));
+            }),
           ),
         ),
       ),
@@ -59,3 +76,34 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
     super.dispose();
   }
 }
+
+
+
+
+// return GestureDetector(
+//       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+//       child: SafeArea(
+//         child: Scaffold(
+//           appBar: ChatPageAppBar(),
+//           body: Column(
+//             children: [
+//               Obx(
+//                 () => Flexible(
+//                   child: ListView.builder(
+//                     reverse: true,
+//                     physics: const BouncingScrollPhysics(),
+//                     itemCount: chatController.bubbles.length,
+//                     itemBuilder: (_, index) => chatController.bubbles[index],
+//                   ),
+//                 ),
+//               ),
+//               const Divider(height: 1),
+//               Container(
+//                 color: Colors.white,
+//                 child: ChatInput(),
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
